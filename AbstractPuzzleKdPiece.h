@@ -8,50 +8,53 @@
 #include <string>
 
 #include "Constrain.h"
+#include "PuzzlePiece.h"
 
-template <int K, unsigned int D>
-class AbstractPuzzleKdPiece{
+template<int K, unsigned int D>
+class AbstractPuzzleKdPiece : public PuzzlePiece {
 private:
-    int values[D*2] = {};
+    int values[D * 2] = {};
 public:
     AbstractPuzzleKdPiece(std::initializer_list<int> v) {
         int i = 0;
-        for(auto& a : v) {
-            if(a < -K || a > K)
+        for (auto &a : v) {
+            if (a < -K || a > K)
                 throw std::string("bad value!");
             values[i++] = a;
         }
-        if(i!=2*D)
+        if (i != 2 * D)
             throw std::string("Not enough values!");
     }
 
-    const int* begin() const {
+    const int *begin() const override {
         return values;
     }
-    const int* end() const {
-        return values + 2*D;
+
+    const int *end() const override {
+        return values + 2 * D;
     }
 
     int getKvalue() const { return K; }
-    unsigned int getDimension() const {return D; }
-    unsigned int getNumberOfFaces() const {return 2 * D;}
-    void toString(std::ostream& out) const {
+
+    unsigned int getDimension() const { return D; }
+
+    unsigned int getNumberOfFaces() const { return 2 * D; }
+
+    void toString(std::ostream &out) const override {
         bool first = true;
-        for(int i : this->values)
-        {
-            if(first)
+        for (int i : this->values) {
+            if (first)
                 out << i;
             else
                 out << ", " << i;
             first = false;
         }
     }
-};
 
-template <int K, unsigned int D>
-inline std::ostream& operator<<(std::ostream& out, const AbstractPuzzleKdPiece<K,D>& val){
-   val.toString(out);
-    return out;
-}
+    set<Constrain> getAllConstrain() override {
+        set<Constrain> a;
+        return a;
+    }
+};
 
 #endif //PIECEREPO_ABSTRACTPUZZLEKDPIECE_H

@@ -1,6 +1,15 @@
 #include "groupPuzzlePiecesWithRotate.h"
-/*
-groupPuzzlePiecesWithRotate::groupPuzzlePiecesWithRotate(std::_List_iterator<T> iterator,
-                                                         std::_List_iterator<T> list_iterator) {
 
-}*/
+//const list<const PuzzlePiece> &groupPuzzlePiecesWithRotate::get(Constrain constrain) const {
+//    constrain.checkForConstants(K, D);
+//    //auto search = constrainMap.find(constrain);
+////    if (search != constrainMap.end()) {
+////        return search->second;
+////    } else {
+////        return list<const PuzzlePiece>();
+////    }
+//}
+//const list<unique_ptr<const PuzzlePiece>> groupPuzzlePiecesWithRotate::get(Constrain &constrain) const {
+//    list<unique_ptr<const PuzzlePiece>> a;
+//    return a;
+//}

@@ -1,4 +1,4 @@
-#ifndef PIECEREPO_PUZZLE2DPIECE_H
+    #ifndef PIECEREPO_PUZZLE2DPIECE_H
 #define PIECEREPO_PUZZLE2DPIECE_H
 
 #include "AbstractPuzzleKdPiece.h"
