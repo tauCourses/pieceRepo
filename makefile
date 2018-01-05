@@ -4,7 +4,8 @@ EXEC = ex4
 CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
 -Werror -pedantic-errors -DNDEBUG 
 
-OBJS =  Constrain.o \
+OBJS =  PuzzlePiece.o \
+		Constrain.o \
 		AbstractPuzzleKdPiece.o \
 		Puzzle2dPiece.o \
 		Puzzle3dPiece.o \
@@ -14,9 +15,11 @@ OBJS =  Constrain.o \
 $(EXEC): $(OBJS)
 	$(CPP) $(OBJS) -o $@
 
-Constrain.o: Constrain.cpp 
+PuzzlePiece.o: PuzzlePiece.cpp
 	$(CPP) $(CPP_COMP_FLAG) -c $*.cpp
-AbstractPuzzleKdPiece.o: AbstractPuzzleKdPiece.cpp Constrain.h
+Constrain.o: Constrain.cpp PuzzlePiece.h
+	$(CPP) $(CPP_COMP_FLAG) -c $*.cpp
+AbstractPuzzleKdPiece.o: AbstractPuzzleKdPiece.cpp Constrain.h PuzzlePiece.h
 	$(CPP) $(CPP_COMP_FLAG) -c $*.cpp
 Puzzle2dPiece.o: Puzzle2dPiece.cpp AbstractPuzzleKdPiece.h
 	$(CPP) $(CPP_COMP_FLAG) -c $*.cpp
