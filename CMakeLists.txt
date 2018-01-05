@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.8)
+project(pieceRepo)
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(SOURCE_FILES main.cpp groupPuzzlePiecesWithRotate.cpp groupPuzzlePiecesWithRotate.h)
+add_executable(pieceRepo ${SOURCE_FILES})

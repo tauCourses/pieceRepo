@@ -1,0 +1,9 @@
+#ifndef PIECEREPO_GROUPPUZZLEPIECESWITHROTATE_H
+#define PIECEREPO_GROUPPUZZLEPIECESWITHROTATE_H
+
+
+class groupPuzzlePiecesWithRotate {
+
+};
+
+
