@@ -1,5 +1,6 @@
-//
-// Created by private on 1/5/18.
-//
-
 #include "groupPuzzlePiecesWithRotate.h"
+
+groupPuzzlePiecesWithRotate::groupPuzzlePiecesWithRotate(std::_List_iterator<T> iterator,
+                                                         std::_List_iterator<T> list_iterator) {
+
+}
