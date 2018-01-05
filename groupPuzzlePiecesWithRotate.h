@@ -13,44 +13,35 @@
 
 using namespace std;
 
+
 class groupPuzzlePiecesWithRotate {
 public:
     template<class T>
-    groupPuzzlePiecesWithRotate(T start, T end) : K(start->getKvalue()), D(start->getDimension()) {
+    groupPuzzlePiecesWithRotate(std::_List_iterator<T> start, std::_List_iterator<T> end) : K(start->getKvalue()),
+                                                                                            D(start->getDimension()) {
         for (auto a = start; a != end; a++) {
-            addPiece(*a);
+            addPiece(shared_ptr<PuzzlePiece>(new T(*a)));
         }
     }
 
-
-//    const list<unique_ptr<const PuzzlePiece>> get(Constrain &constrain) const;
-
+    const list<shared_ptr<PuzzlePiece>> get(const Constrain &constrain) const;
 
 private:
     const int K, D;
-    //unordered_map<Constrain, int, Constrain::ConstrainHasher> constrainMap;
+    unordered_map<Constrain, list<shared_ptr<PuzzlePiece>>, Constrain::ConstrainHasher> constrainMap;
 
     template<class T>
-    void addPiece(T &piece) {
-        for (auto &constrain : piece.getAllConstrain())
+    void addPiece(shared_ptr<T> piece) {
+        for (auto &constrain : piece->getAllConstrain())
             addPieceToConstrain(piece, constrain);
     }
 
-    class
-
     template<class T>
-    void addPieceToConstrain(T &piece, const Constrain &constrain) {
-        vector<PuzzlePiece> a(0);
-        unordered_map<Constrain, vector<PuzzlePiece>, Constrain::KeyHasher> m6 = {
-        };
-        m6.insert(unordered_map<Constrain, list<unique_ptr<PuzzlePiece>>, Constrain::KeyHasher>::value_type(Constrain({1, 2, 12}), a));
-//        auto search = constrainMap.find(constrain);
-//        if (search == constrainMap.end()) {
-//            int a;
-//            search = constrainMap.insert({constrain, a});
-//        } else {
-//
-//        }
+    void addPieceToConstrain(shared_ptr<T> piece, const Constrain &constrain) {
+        auto search = constrainMap.find(constrain);
+        if (search == constrainMap.end())
+            search = constrainMap.insert({constrain, list<shared_ptr<PuzzlePiece>>()}).first;
+        search->second.push_back(piece);
     }
 };
 

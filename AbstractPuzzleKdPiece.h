@@ -12,18 +12,16 @@
 
 template<int K, unsigned int D>
 class AbstractPuzzleKdPiece : public PuzzlePiece {
-private:
-    int values[D * 2] = {};
 public:
     AbstractPuzzleKdPiece(std::initializer_list<int> v) {
         int i = 0;
         for (auto &a : v) {
             if (a < -K || a > K)
-                throw std::string("bad value!");
+                throw std::string("bad value!");// todo need to throw an exception
             values[i++] = a;
         }
-        if (i != 2 * D)
-            throw std::string("Not enough values!");
+        if (i != values_length)
+            throw std::string("Not enough values!"); // todo need to throw an exception
     }
 
     const int *begin() const override {
@@ -52,9 +50,23 @@ public:
     }
 
     set<Constrain> getAllConstrain() override {
-        set<Constrain> a;
-        return a;
+        set<Constrain> res;
+        vector<int> shifted_values(values_length);
+        for (int shift = 0; shift < values_length; ++shift) {
+            for (int mask = 0; mask < 1 << values_length; ++mask, shifted_values.clear()) {
+                for (int i = 0, bit = 1; i < values_length; ++i, bit <<= 1)
+                    shifted_values.push_back(
+                            (bit & mask) ? values[(i + shift) % values_length] : std::numeric_limits<int>::min());
+                Constrain constrain(shifted_values);
+                res.insert(constrain);
+            }
+        }
+        return res;
     }
+
+private:
+    const unsigned int values_length = D * 2;
+    int values[D * 2] = {};
 };
 
 #endif //PIECEREPO_ABSTRACTPUZZLEKDPIECE_H

@@ -13,7 +13,9 @@ class Constrain {
 public :
     Constrain(initializer_list<int> v) : values(v) {}
 
-    struct KeyHasher {
+    explicit Constrain(vector<int> &v) : values(v) {}
+
+    struct ConstrainHasher {
         std::size_t operator()(const Constrain &c) const {
             size_t res = 0;
             for (auto &i: c.values)
