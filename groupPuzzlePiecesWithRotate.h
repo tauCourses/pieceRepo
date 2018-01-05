@@ -6,14 +6,20 @@
 
 #include "AbstractPuzzleKdPiece.h"
 
-/*template<class T>
+template<class T>
 class groupPuzzlePiecesWithRotate {
 public:
-    static_assert(std::is_base_of<AbstractPuzzleKdPiece, T>::value, "T must be a descendant of AbstractPuzzleKdPiece");
-    groupPuzzlePiecesWithRotate(std::_List_iterator <T> iterator, std::_List_iterator <T> list_iterator);
+    groupPuzzlePiecesWithRotate(std::_List_iterator <T> start, std::_List_iterator <T> end) :
+        l(std::list<T>(start,end)){
+    }
 
-    std::list<AbstractPuzzleKdPiece> & get(T t);
-};*/
+    std::list<T> & get(T t){
+        return this->l;
+    }
+
+private:
+    std::list<T> l;
+};
 
 
 #endif //PIECEREPO_GROUPPUZZLEPIECESWITHROTATE_H

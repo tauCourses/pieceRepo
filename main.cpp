@@ -8,18 +8,14 @@
 #include "groupPuzzlePiecesWithRotate.h"
 
 int main() {
-    //{
-    Puzzle2dPiece<3> p = {0,2,0,1};
-    std::cout << p << std::endl;
-//    for(auto p1:p)
-  //      std::cout << p1 << std::endl;
-    //      std::list <Puzzle2dPiece<5>> pieces = {{0, 3,  2, -5}, {0, -2, 2, -5}};
-        /*auto groups = groupPuzzlePiecesWithRotate(pieces.begin(), pieces.end());
+    {
+        std::list <Puzzle2dPiece<5>> pieces = {{0, 3,  2, -5}, {0, -2, 2, -5}};
+        auto groups = groupPuzzlePiecesWithRotate<Puzzle2dPiece<5>>(pieces.begin(), pieces.end());
         auto &some_pieces = groups.get({0, std::numeric_limits<int>::min(), 2, -4});
         for (auto piece_ptr : some_pieces) {
-            std::cout << *piece_ptr << std::endl; // will print both pieces!
+            std::cout << piece_ptr << std::endl; // will print both pieces!
         }
-    }
+    }/*
 
     {
         std::list <Puzzle3dPiece<1>> pieces = {{0, 1, 1, 1, -1, -1}, {0, -1, 1, 1, 1,  1}};

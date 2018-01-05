@@ -17,9 +17,9 @@ public:
         return this->values.end();
     }
 
-    int getKvalue() const { return this->Kvalue; }
-    unsigned int getDimension() const {return this->dimension; }
-    unsigned int getNumberOfFaces() const {return 2 * this->dimension;}
+    int getKvalue() const { return K; }
+    unsigned int getDimension() const {return D; }
+    unsigned int getNumberOfFaces() const {return 2 * D;}
     void toString(std::ostream& out) const {
         bool first = true;
         for(int i : this->values)
@@ -38,8 +38,6 @@ protected:
             throw std::string("The absolut value of one values is above K");
     }
     std::vector<int> values;
-    int Kvalue = K;
-    unsigned int dimension = D;
 };
 
 template <int K, unsigned int D>
