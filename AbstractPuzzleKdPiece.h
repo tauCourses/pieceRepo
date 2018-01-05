@@ -4,21 +4,24 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
+#include <algorithm>
+#include <string>
 
 template <int K, unsigned int D>
 class AbstractPuzzleKdPiece{
 public:
-    virtual std::iterator begin() = 0;
-    virtual std::iterator end() = 0;
+    std::vector<int>::iterator begin();
+    std::vector<int>::iterator end();
 
-    std::ostream & operator<<(std::ostream & Str, AbstractPuzzleKdPiece const & v) = 0;
+    std::ostream & operator<<(std::ostream & Str, AbstractPuzzleKdPiece const & v);
 
-    int getMaximumNumber();
+    int getKvalue();
     unsigned int getDimension();
     unsigned int getNumberOfFaces();
 protected:
+    void checkValues(); //throw exception if wrong value found;
     std::vector<int> values;
-    int maximumNumber = K;
+    int Kvalue = K;
     unsigned int dimension = D;
 };
 
