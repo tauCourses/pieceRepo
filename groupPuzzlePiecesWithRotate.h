@@ -13,7 +13,9 @@ public:
         l(std::list<T>(start,end)){
     }
 
-    std::list<T> & get(T t){
+    std::list<T> & get(){
+        //if()
+        //    throw std::string("WTF");
         return this->l;
     }
 
