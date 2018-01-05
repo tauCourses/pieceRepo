@@ -7,14 +7,29 @@
 #include <algorithm>
 #include <string>
 
+#include "Constrain.h"
+
 template <int K, unsigned int D>
 class AbstractPuzzleKdPiece{
+private:
+    int values[D*2] = {};
 public:
-    std::vector<int>::iterator begin() {
-        return this->values.begin();
+    AbstractPuzzleKdPiece(std::initializer_list<int> v) {
+        int i = 0;
+        for(auto& a : v) {
+            if(a < -K || a > K)
+                throw std::string("bad value!");
+            values[i++] = a;
+        }
+        if(i!=2*D)
+            throw std::string("Not enough values!");
     }
-    std::vector<int>::iterator end()  {
-        return this->values.end();
+
+    const int* begin() const {
+        return values;
+    }
+    const int* end() const {
+        return values + 2*D;
     }
 
     int getKvalue() const { return K; }
@@ -31,19 +46,11 @@ public:
             first = false;
         }
     }
-
-protected:
-    void checkValues() { //throw exception if wrong value found;
-        if (std::any_of(this->values.begin(), this->values.end(), [](int i){return abs(i) > K;}) )
-            throw std::string("The absolut value of one values is above K");
-    }
-    std::vector<int> values;
 };
 
 template <int K, unsigned int D>
 inline std::ostream& operator<<(std::ostream& out, const AbstractPuzzleKdPiece<K,D>& val){
    val.toString(out);
-    out << val.getDimension();
     return out;
 }
 

@@ -1,26 +1,35 @@
 #ifndef PIECEREPO_GROUPPUZZLEPIECESWITHROTATE_H
 #define PIECEREPO_GROUPPUZZLEPIECESWITHROTATE_H
 
+#include <iostream>
 #include <list>
 #include <type_traits>
 
 #include "AbstractPuzzleKdPiece.h"
+#include "Constrain.h"
 
-template<class T>
+using namespace std;
+
 class groupPuzzlePiecesWithRotate {
 public:
-    groupPuzzlePiecesWithRotate(std::_List_iterator <T> start, std::_List_iterator <T> end) :
-        l(std::list<T>(start,end)){
+    template<class T>
+    groupPuzzlePiecesWithRotate(T start, T end) : K((*start).getKvalue()), D((*start).getDimension())
+    {
+        for(auto a=start; a != end ;a++)
+        {
+          //  *a->getAllConstrains();
+        //    updateConstrains();
+        }
     }
 
-    std::list<T> & get(){
-        //if()
-        //    throw std::string("WTF");
-        return this->l;
+    void get(Constrain c){
+        c.checkForConstants(K,D);
+      //  return constrainMap(c);
     }
 
 private:
-    std::list<T> l;
+    const int K,D;
+
 };
 
 
