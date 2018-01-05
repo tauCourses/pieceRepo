@@ -11,5 +11,5 @@ set(SOURCE_FILES main.cpp
         Puzzle3dPiece.h
         Constrain.cpp
         Constrain.h
-        PuzzlePiece.h PuzzlePiece.cpp)
+        PuzzlePiece.h PuzzlePiece.cpp AbstractPuzzleKdPiece.cpp Puzzle3dPiece.cpp Puzzle2dPiece.cpp)
 add_executable(pieceRepo ${SOURCE_FILES})
