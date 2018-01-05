@@ -9,5 +9,4 @@ public:
     Puzzle2dPiece(const std::initializer_list<int> &v) : AbstractPuzzleKdPiece<N,2>::AbstractPuzzleKdPiece(v) {}
 };
 
-
 #endif //PIECEREPO_PUZZLE2DPIECE_H

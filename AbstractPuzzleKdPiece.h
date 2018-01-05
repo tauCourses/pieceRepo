@@ -15,14 +15,13 @@ template<int K, unsigned int D>
 class AbstractPuzzleKdPiece : public PuzzlePiece {
 public:
     AbstractPuzzleKdPiece(std::initializer_list<int> v) {
+        if (v.size() != values_length) throw std::runtime_error("Not enough values!");
         int i = 0;
         for (auto &a : v) {
             if (a < -K || a > K)
-                throw std::string("bad value!");// todo need to throw an exception
+                throw std::runtime_error("bad value!");
             values[i++] = a;
         }
-        if (i != values_length)
-            throw std::string("Not enough values!"); // todo need to throw an exception
     }
 
     const int *begin() const override {
