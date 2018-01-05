@@ -13,11 +13,12 @@ public:
     std::vector<int>::iterator begin();
     std::vector<int>::iterator end();
 
-    std::ostream & operator<<(std::ostream & Str, AbstractPuzzleKdPiece const & v);
+//    std::ostream & operator<<(std::ostream & Str, AbstractPuzzleKdPiece<K,D> const & v);
 
     int getKvalue();
     unsigned int getDimension();
     unsigned int getNumberOfFaces();
+
 protected:
     void checkValues(); //throw exception if wrong value found;
     std::vector<int> values;

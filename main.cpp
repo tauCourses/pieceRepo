@@ -1,6 +1,6 @@
 #include <iostream>
-#include <limits>
-#include <list>
+//#include <limits>
+//#include <list>
 
 #include "Puzzle2dPiece.h"
 #include "Puzzle3dPiece.h"
@@ -8,7 +8,8 @@
 
 int main() {
     //{
-        std::list <Puzzle2dPiece<5>> pieces = {{0, 3,  2, -5}, {0, -2, 2, -5}};
+  Puzzle2dPiece<5> p = {1,2,3,4};
+  //      std::list <Puzzle2dPiece<5>> pieces = {{0, 3,  2, -5}, {0, -2, 2, -5}};
         /*auto groups = groupPuzzlePiecesWithRotate(pieces.begin(), pieces.end());
         auto &some_pieces = groups.get({0, std::numeric_limits<int>::min(), 2, -4});
         for (auto piece_ptr : some_pieces) {
