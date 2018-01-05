@@ -13,7 +13,7 @@ class Constrain {
 public :
     Constrain(initializer_list<int> v) : values(v) {}
 
-    explicit Constrain(vector<int> &v) : values(v) {}
+    Constrain(vector<int> v) : values(v) {}
 
     struct ConstrainHasher {
         std::size_t operator()(const Constrain &c) const {

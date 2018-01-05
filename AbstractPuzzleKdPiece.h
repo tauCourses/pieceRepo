@@ -54,10 +54,10 @@ public:
         unordered_set<Constrain, Constrain::ConstrainHasher> res;
         vector<int> shifted_values(values_length);
         for (int shift = 0; shift < values_length; ++shift) {
-            for (int mask = 0; mask < 1 << values_length; ++mask, shifted_values.clear()) {
+            for (int mask = 0; mask < 1 << values_length; ++mask) {
                 for (int i = 0, bit = 1; i < values_length; ++i, bit <<= 1)
-                    shifted_values.push_back(
-                            (bit & mask) ? values[(i + shift) % values_length] : std::numeric_limits<int>::min());
+                    shifted_values[i] =
+                            (bit & mask) ? values[(i + shift) % values_length] : std::numeric_limits<int>::min();
                 res.emplace(shifted_values);
             }
         }
