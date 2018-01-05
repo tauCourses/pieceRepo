@@ -24,8 +24,6 @@ public :
         }
     };
 
-    void checkForConstants(int K, int D) const {}
-
     bool operator==(const Constrain &rhs) const {
         if (this->values.size() != rhs.values.size()) return false;
         for (auto l = this->values.begin(), r = rhs.values.begin();

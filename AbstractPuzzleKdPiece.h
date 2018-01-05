@@ -15,7 +15,7 @@ template<int K, unsigned int D>
 class AbstractPuzzleKdPiece : public PuzzlePiece {
 public:
     AbstractPuzzleKdPiece(std::initializer_list<int> v) {
-        int i = 0;
+        unsigned int i = 0;
         for (auto &a : v) {
             if (a < -K || a > K)
                 throw std::string("bad value!");// todo need to throw an exception
@@ -53,11 +53,12 @@ public:
     unordered_set<Constrain, Constrain::ConstrainHasher> getAllConstrain() override {
         unordered_set<Constrain, Constrain::ConstrainHasher> res;
         vector<int> shifted_values(values_length);
-        for (int shift = 0; shift < values_length; ++shift) {
+        for (unsigned int shift = 0; shift < values_length; ++shift) {
             for (int mask = 0; mask < 1 << values_length; ++mask) {
-                for (int i = 0, bit = 1; i < values_length; ++i, bit <<= 1)
+                for (unsigned int i = 0, bit = 1; i < values_length; ++i, bit <<= 1)
                     shifted_values[i] =
                             (bit & mask) ? values[(i + shift) % values_length] : std::numeric_limits<int>::min();
+
                 res.emplace(shifted_values);
             }
         }
