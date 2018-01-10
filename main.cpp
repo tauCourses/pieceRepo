@@ -17,12 +17,12 @@ int main() {
                                           {1,  -2, 1,  3},
                                           {0,  0,  2,  0},
                                           {0,  2,  0,  0},
-                                          {2,  0,  0,  0}
-    };
+                                          {2,  0,  0,  0}};
 
     std::list<Constrain> constrains = {{free_space, 2,  0, 0},
                                        {1,          -2, 1, 3},
                                        {free_space, free_space, free_space, free_space}};
+
 
     auto groups = groupPuzzlePiecesWithRotate(pieces.begin(), pieces.end());
     for (auto &constain:constrains) {
@@ -33,16 +33,14 @@ int main() {
         }
         cout << endl;
     }
-
-
-    {
-        std::list<Puzzle3dPiece<1>> pieces2 = {{0, 1,  1, 1, -1, -1},
-                                               {0, -1, 1, 1, 1,  1}};
-        auto groups2 = groupPuzzlePiecesWithRotate(pieces2.begin(), pieces2.end());
-        cout << "constrain: 3d" << endl;
-        auto &some_pieces2 = groups2.get({-1, 1, 1, 0, 1, 1});
-        for (auto &piece_ptr : some_pieces2) {
-            std::cout << *piece_ptr << std::endl; // will print nothing!
-        }
+    
+    std::list<Puzzle3dPiece<1>> pieces2 = {{0, 1,  1, 1, -1, -1},
+                                           {0, -1, 1, 1, 1,  1}};
+    auto groups2 = groupPuzzlePiecesWithRotate(pieces2.begin(), pieces2.end());
+    cout << "constrain: 3d" << endl;
+    auto &some_pieces2 = groups2.get({-1, 1, 1, 0, 1, 1});
+    for (auto &piece_ptr : some_pieces2) {
+        std::cout << *piece_ptr << std::endl; // will print nothing!
     }
+    
 }

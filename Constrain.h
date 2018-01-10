@@ -22,6 +22,9 @@ public :
         std::size_t operator()(const Constrain &c) const;
     };
 
+
+    void checkForConstants(int K, unsigned int D) const;
+    
     bool operator==(const Constrain &rhs) const;
 
     void toString(ostream &out) const;

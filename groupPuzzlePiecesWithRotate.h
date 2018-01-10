@@ -27,7 +27,8 @@ public:
     const list<shared_ptr<PuzzlePiece>> get(const Constrain &constrain) const;
 
 private:
-    const int K, D;
+    const int K;
+    const unsigned int D;
     unordered_map<Constrain, list<shared_ptr<PuzzlePiece>>, Constrain::ConstrainHasher> constrainMap;
 
     template<class T>
