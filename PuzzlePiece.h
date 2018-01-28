@@ -1,7 +1,3 @@
-//
-// Created by t-idkess on 05-Jan-18.
-//
-
 #ifndef PIECEREPO_PUZZLEPIECE_H
 #define PIECEREPO_PUZZLEPIECE_H
 
@@ -21,7 +17,7 @@ public:
 
     virtual void toString(ostream &out) const =0;
 
-    virtual unordered_set<Constrain, Constrain::ConstrainHasher> getAllConstrain() =0;
+    virtual unordered_set<Constrain, Constrain::ConstrainHasher> getAllConstrains(bool rotatable = false) =0;
 };
 
 inline ostream &operator<<(ostream &out, const PuzzlePiece &val) {
