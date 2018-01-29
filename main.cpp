@@ -48,7 +48,7 @@ int main() {
             std::cout << "\t" << *piece_ptr << std::endl;
         }
     }
-    cout << "3d without rotation:" << endl;
+    cout << endl << "3d without rotation:" << endl;
     auto groups3d = groupPuzzlePieces(Pieces3d.begin(), Pieces3d.end());
     for (auto &constain:constrains3d) {
         auto &some_pieces = groups3d.get(constain);
