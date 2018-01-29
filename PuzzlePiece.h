@@ -1,8 +1,6 @@
 #ifndef PIECEREPO_PUZZLEPIECE_H
 #define PIECEREPO_PUZZLEPIECE_H
 
-#include <iostream>
-#include <set>
 #include <unordered_set>
 
 #include "Constrain.h"

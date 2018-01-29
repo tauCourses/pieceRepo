@@ -1,13 +1,6 @@
 #ifndef PIECEREPO_ABSTRACTPUZZLEKDPIECE_H
 #define PIECEREPO_ABSTRACTPUZZLEKDPIECE_H
 
-#include <iostream>
-#include <iterator>
-#include <vector>
-#include <algorithm>
-#include <string>
-#include <unordered_set>
-
 #include "Constrain.h"
 #include "PuzzlePiece.h"
 

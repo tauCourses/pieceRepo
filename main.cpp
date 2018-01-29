@@ -1,18 +1,20 @@
-#include <iostream>
-#include <list>
+
 #include "ex4headers.h"
 
 #define free_space numeric_limits<int>::min()
 
+using namespace std;
+
 int main() {
-    std::list<Puzzle2dPiece<5>> pieces = {{0, -3, 2,  0},
+    list<Puzzle2dPiece<5>> pieces = {{0, -3, 2,  0},
                                           {2,  -1, 4,  1},
                                           {1,  -2, 1,  3},
                                           {0,  0,  2,  0},
                                           {0,  2,  0,  0},
                                           {2,  0,  0,  0}};
 
-    std::list<Constrain> constrains = {{free_space, 2,  0, 0}};
+    list<Constrain> constrains = {{free_space, 2,  0, 0},
+                                  {free_space, 1, free_space, 1}};
 
 
     auto groups = groupPuzzlePieces(pieces.begin(), pieces.end());

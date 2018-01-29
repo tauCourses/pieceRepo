@@ -1,7 +1,6 @@
 #ifndef PIECEREPO_GROUPPUZZLEPIECES_H
 #define PIECEREPO_GROUPPUZZLEPIECES_H
 
-#include <iostream>
 #include <list>
 #include <memory>
 #include <unordered_map>
@@ -13,11 +12,12 @@ using namespace std;
 
 class groupPuzzlePieces {
 public:
-    template<class T>
-    explicit groupPuzzlePieces(std::_List_iterator<T> start, std::_List_iterator<T> end, bool rotatable=false) :
+    template<class Iterator>
+    explicit groupPuzzlePieces(Iterator start, Iterator end, bool rotatable=false) :
             K(start->getKvalue()), D(start->getDimension()), rotatable(rotatable) {
-        for (auto piece = start; piece != end; piece++)
-            this->addPiece(shared_ptr<PuzzlePiece>(new T(*piece)));
+        typedef typename std::iterator_traits<Iterator>::value_type Result;
+        while(start != end)
+            this->addPiece(make_shared<Result>(std::move(*start++)));
 
     }
 

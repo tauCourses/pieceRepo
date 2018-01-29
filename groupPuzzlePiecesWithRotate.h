@@ -5,9 +5,11 @@
 
 class groupPuzzlePiecesWithRotate : public groupPuzzlePieces{
 public:
-    template<class T> explicit groupPuzzlePiecesWithRotate(std::_List_iterator<T> start, std::_List_iterator<T> end)
-            : groupPuzzlePieces(start,end, true) //enable rotatable
-    {};
+    template<class Iterator>
+    explicit groupPuzzlePiecesWithRotate(Iterator start, Iterator end) :
+            groupPuzzlePieces(start,end, true) //enable rotatable
+    {}
+
 };
 
 

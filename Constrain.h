@@ -2,12 +2,8 @@
 #define PIECEREPO_CONSTRAIN_H
 
 #include <iostream>
-#include <iterator>
-#include <utility>
 #include <vector>
 #include <algorithm>
-#include <string>
-#include <stdexcept>
 
 
 using namespace std;
